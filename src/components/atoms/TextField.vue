@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input class="text-field" :type="type" :style="textFieldSize" :value="value" @input="updateValue" @keydown.enter="enterText" />
+    <input class="text-field" :type="type" :style="textFieldSize" :value="value" :placeholder="placeholder" @input="updateValue" @keydown.enter="enterText" />
     <div v-if="validationMessage !== ''" class="validation-message">{{ validationMessage }}</div>
   </div>
 </template>
@@ -16,6 +16,10 @@ export default {
       default: '',
     },
     height: {
+      type: String,
+      default: '',
+    },
+    placeholder: {
       type: String,
       default: '',
     },

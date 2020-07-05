@@ -19,63 +19,6 @@
   align-items: center;
   justify-content: center;
   background: rgba($black, 0.5);
-  .modal {
-    position: relative;
-    z-index: 1002;
-    min-width: 640px;
-    min-height: 525px;
-    max-width: 640px;
-    max-height: 525px;
-    background: $blank;
-    padding: 0px 20px;
-    flex-direction: column;
-    display: flex;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    border-radius: 10px;
-    @media screen and (max-width: 640px) {
-      height: 80%;
-    }
-    .main-content {
-      padding: 12px 0px;
-      max-height: calc(532px - 126px);
-      .form {
-        margin: 12px;
-        &-content {
-          margin-top: 12px;
-          margin-right: 72px;
-          display: flex;
-          justify-content: flex-end;
-          align-items: center;
-          &-label {
-            margin-right: 32px;
-          }
-        }
-      }
-      .failed-message {
-        color: $caution;
-        text-align: center;
-      }
-      .message {
-        text-align: center;
-      }
-    }
-    .footer {
-      background-color: $blank;
-      position: absolute;
-      bottom: 0;
-      border-top: 1px solid $main;
-      width: 94%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      height: 64px;
-      align-items: center;
-      .modal-button {
-        padding: 0 20px;
-      }
-    }
-  }
   .small-modal {
     position: relative;
     z-index: 1002;
@@ -94,9 +37,14 @@
     .modal-header {
       position: fixed;
       width: 90%;
-      height: 55px;
-      background: red;
+      background: $sub;
       border-radius: 10px 10px 0 0;
+      &-search {
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     }
     .modal-content {
       height: 150px;

@@ -1,11 +1,13 @@
 <template>
   <modal :isSmall="true">
-    <template v-slot:main-content>        
-      <div class="form">
-        <div class="form-content">
-          <div class="form-content-label">名前(漢字)</div>
-        </div>
+    <template v-slot:main-header>
+      <div class="modal-header-search">
+        <font-awesome-icon :icon="['fas', 'times']" style="font-size:24px;" class="close-icon" @click="closeModal()" />
+        <text-field placeholder="職業" v-model="work" width="100px" />
+        <text-field placeholder="条件" v-model="conditions" width="180px" />
       </div>
+    </template>
+    <template v-slot:main-content>
     </template>
     <template v-slot:footer>
     </template>
@@ -13,11 +15,13 @@
 </template>
 <script>
 import Modal from '@/components/organisms/Modals/index.vue';
+import TextField from '@/components/atoms/TextField.vue'
 import { mapGetters } from 'vuex'
 
 export default {
   components: {
-    Modal, 
+    Modal,
+    TextField,
   },
   props: {
     userData: {
@@ -50,4 +54,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import '@/assets/scss/modal.scss';
+.close-icon {
+  padding-right: 8px;
+}
 </style>

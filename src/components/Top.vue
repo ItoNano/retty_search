@@ -1,17 +1,20 @@
 <template>
   <div>
     <text-field />
+    <search-edit />
     {{getSearchData.work}}
     {{getSearchData.conditions}}
   </div>
 </template>
 
 <script>
+import SearchEdit from '@/components/organisms/Modals/SearchEdit.vue';
 import { mapGetters } from 'vuex'
 import TextField from '@/components/atoms/TextField.vue'
 export default {
   components : {
     TextField,
+    SearchEdit
   },
   data() {
     return {
