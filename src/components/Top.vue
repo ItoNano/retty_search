@@ -1,20 +1,23 @@
 <template>
   <div>
-    <text-field />
-    <search-edit />
-    {{getSearchData.work}}
-    {{getSearchData.conditions}}
+    <search-modal
+      v-if="showSearchModal"
+      @closeModal="closeModal"
+    />
+    <Button type="main" width="320px" height="42px" @click="openSearch">
+      検索
+    </Button>
   </div>
 </template>
 
 <script>
-import SearchEdit from '@/components/organisms/Modals/SearchEdit.vue';
+import SearchModal from '@/components/organisms/Modals/SearchModal.vue';
+import Button from '@/components/atoms/Button.vue';
 import { mapGetters } from 'vuex'
-import TextField from '@/components/atoms/TextField.vue'
 export default {
   components : {
-    TextField,
-    SearchEdit
+    SearchModal,
+    Button,
   },
   data() {
     return {
@@ -67,6 +70,7 @@ export default {
           'Web面談可能'
         ]
       },
+      showSearchModal: false,
     }
   },
   computed: {
@@ -80,6 +84,12 @@ export default {
   methods: {
     setSearchData() {
       this.$store.commit('search/setSearchData',this.search_list)
+    },
+    openSearch() {
+      this.showSearchModal = true
+    },
+    closeModal() {
+      this.showSearchModal = false
     },
   }
 }

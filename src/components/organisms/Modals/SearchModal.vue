@@ -3,15 +3,23 @@
     <template v-slot:main-header>
       <div class="modal-header-search">
         <font-awesome-icon :icon="['fas', 'times']" style="font-size:24px;" class="close-icon" @click="closeModal()" />
-        <text-field placeholder="職業" v-model="work" width="100px" />
-        <text-field placeholder="条件" v-model="conditions" width="180px" />
+        <text-field
+          placeholder="職業"
+          v-model="inputData.work"
+          width="100px"
+        />
+        <text-field
+          placeholder="条件"
+          v-model="inputData.conditions"
+          width="180px"
+        />
       </div>
     </template>
     <template v-slot:main-content>
     </template>
     <template v-slot:footer>
     </template>
-  </modal>  
+  </modal>
 </template>
 <script>
 import Modal from '@/components/organisms/Modals/index.vue';
@@ -36,10 +44,9 @@ export default {
   },
   data() {
     return {
-      failedValidate: false,
       inputData: {
-        name: '',
-        name_eng: '',
+        work: '',
+        conditions: '',
       }
     }
   },
