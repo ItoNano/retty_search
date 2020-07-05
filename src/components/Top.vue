@@ -1,10 +1,13 @@
 <template>
   <div>
     <text-field />
+    {{getSearchData.work}}
+    {{getSearchData.conditions}}
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import TextField from '@/components/atoms/TextField.vue'
 export default {
   components : {
@@ -63,6 +66,19 @@ export default {
       },
     }
   },
+  computed: {
+    ...mapGetters({
+      getSearchData: 'search/getSearchData',
+    }),
+  },
+  created() {
+    this.setSearchData()
+  },
+  methods: {
+    setSearchData() {
+      this.$store.commit('search/setSearchData',this.search_list)
+    },
+  }
 }
 </script>
 
