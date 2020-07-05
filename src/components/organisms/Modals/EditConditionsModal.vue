@@ -1,21 +1,28 @@
 <template>
-  <modal :isSmall="true">
-    <template v-slot:main-header>
-      <div class="modal-header-search">
-        <font-awesome-icon :icon="['fas', 'times']" style="font-size:24px;" class="close-icon" @click="closeModal()" />
-        <text-field
-          placeholder="職業"
-          v-model="inputData.work"
-          width="100px"
-        />
-        <text-field
-          placeholder="条件"
-          v-model="inputData.conditions"
-          width="180px"
-        />
-      </div>
+  <modal :content-style='contentStyle'>
+    <template ref='header' v-slot:main-header>
     </template>
-    <template v-slot:main-content>
+    <template ref='content' v-slot:main-content>
+      <div class="button-area">
+        <Button
+          class="modal-button"
+          type="sub"
+          width="320px"
+          height="42px"
+          @click="closeModal"
+        >
+          キャンセル
+        </Button>
+        <Button
+          class="modal-button"
+          type="main"
+          width="320px"
+          height="42px"
+          @click="closeModal"
+        >
+          保存
+        </Button>
+      </div>
     </template>
     <template v-slot:footer>
     </template>
@@ -23,13 +30,15 @@
 </template>
 <script>
 import Modal from '@/components/organisms/Modals/index.vue';
-import TextField from '@/components/atoms/TextField.vue'
+// import TextField from '@/components/atoms/TextField.vue'
+import Button from '@/components/atoms/Button.vue';
 import { mapGetters } from 'vuex'
 
 export default {
   components: {
+    Button,
     Modal,
-    TextField,
+    // TextField,
   },
   props: {
     userData: {
@@ -48,13 +57,9 @@ export default {
         work: '',
         conditions: '',
       },
-      contentStyle: {
-        marginTop: '0px'
-      }
     }
   },
   mounted() {
-    this.contentStyle.marginTop = this.$refs.header.clientHeight + 'px'
   },
   methods: {
     closeModal() {

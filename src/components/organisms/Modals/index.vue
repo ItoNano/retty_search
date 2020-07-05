@@ -17,14 +17,20 @@
 export default {
   data() {
     return {
-      contentStyle: {
+    }
+  },
+  props: {
+    contentStyle: {
+      type: Object,
+      default: () => ({
         marginTop: '0px',
         marginBottom: '0px'
-      }
+      }),
     }
   },
   mounted() {
     this.contentStyle.marginTop = this.$refs.header.clientHeight + 'px'
+    this.contentStyle.marginBottom = this.$refs.footer.clientHeight + 'px'
   },
   methods: {
   },
@@ -38,4 +44,5 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/assets/scss/modal.scss';
+@import '@/assets/scss/main.scss';
 </style>

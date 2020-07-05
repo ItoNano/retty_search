@@ -62,7 +62,7 @@ export default {
     background-color: $main;
   }
   &-sub {
-    color: $blank;
+    color: $black;
     background-color: $sub;
   }
   &-caution {
