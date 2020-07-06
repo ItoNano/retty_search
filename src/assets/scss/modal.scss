@@ -54,6 +54,9 @@
       font-size: 24px;
       flex-direction: column;
       overflow-y: scroll;
+      .content-box {
+        height: 100%;
+      }
       .form {
         margin: 12px 0;
         font-size: 18px;

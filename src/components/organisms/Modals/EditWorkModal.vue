@@ -3,18 +3,20 @@
     <template ref='header' v-slot:main-header>
     </template>
     <template ref='content' v-slot:main-content>
-      <div class="form" v-for="(workItem, workIndex) in inputSearchData" :key='workIndex'>
-        <div class="form-content">
-          <text-field width="65vw" height="36px" v-model="workItem.name"/>
-          <Button
-            class="modal-footer-button"
-            type="caution"
-            width="50px"
-            height="36px"
-            @click="closeModal"
-          >
-            削除
-          </Button>
+      <div class="content-box">
+        <div class="form" v-for="(workItem, workIndex) in inputSearchData" :key='workIndex'>
+          <div class="form-content">
+            <text-field width="65vw" height="36px" v-model="workItem.name"/>
+            <Button
+              class="modal-footer-button"
+              type="caution"
+              width="50px"
+              height="36px"
+              @click="closeModal"
+            >
+              削除
+            </Button>
+          </div>
         </div>
       </div>
     </template>
@@ -66,7 +68,7 @@ export default {
     }),
   },
   created() {
-    this.inputSearchData = this.getSearchData.work
+    this.inputSearchData = this.getSearchData.conditions
     console.log(this.inputSearchData)
   },
   data() {
@@ -91,5 +93,8 @@ export default {
 @import '@/assets/scss/modal.scss';
 .close-icon {
   padding-right: 8px;
+}
+.box {
+  height: 50px;
 }
 </style>
