@@ -1,5 +1,5 @@
 <template>
-  <modal :content-style='contentStyle'>
+  <modal>
     <template ref='header' v-slot:main-header>
     </template>
     <template ref='content' v-slot:main-content>
@@ -68,8 +68,7 @@ export default {
     }),
   },
   created() {
-    this.inputSearchData = this.getSearchData.conditions
-    console.log(this.inputSearchData)
+    this.inputSearchData = this.getSearchData.work
   },
   data() {
     return {

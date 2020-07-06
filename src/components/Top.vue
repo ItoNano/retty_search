@@ -46,9 +46,6 @@
         現在登録されている職業数:
         {{getSearchData.work.length}}
       </div>
-      <div v-for="(workItem, workIndex) in getSearchData.work" :key="workIndex">
-        {{workItem.name}}
-      </div>
       <div class="information">
         現在登録されている条件数:
         {{getSearchData.conditions.length}}
