@@ -52,9 +52,13 @@ export const search = {
     }
   },
   mutations: {
-    setSearchData(state, word) {
-      state.searchData = {}
-      state.searchData = word
+    setSearchWorkData(state, list) {
+      state.searchData.work = []
+      state.searchData.work = list
+    },
+    setSearchConditionsData(state, list) {
+      state.searchData.conditions = {}
+      state.searchData.conditions = list
     },
   },
   getters: {
