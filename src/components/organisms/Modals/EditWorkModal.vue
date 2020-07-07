@@ -5,14 +5,14 @@
     <template ref='content' v-slot:main-content>
       <div class="content-box">
         <div class="form" v-for="(workItem, workIndex) in inputSearchData" :key='workIndex'>
-          <div class="form-content" v-if="isDelete(workIndex)">
+          <div class="form-content">
             <text-field width="65vw" height="36px" v-model="workItem.name"/>
             <Button
               class="modal-footer-button"
               type="caution"
               width="50px"
               height="36px"
-              @click="deleteContent(workItem, workIndex)"
+              @click="deleteContent(workIndex)"
             >
               削除
             </Button>
@@ -22,7 +22,7 @@
     </template>
     <template v-slot:footer>
       <div>
-        <Button
+        <!-- <Button
           class="modal-footer-button"
           type="sub"
           width="150px"
@@ -30,13 +30,13 @@
           @click="closeModal"
         >
           キャンセル
-        </Button>
+        </Button> -->
         <Button
           class="modal-footer-button"
           type="main"
           width="150px"
           height="42px"
-          @click="closeModal"
+          @click="saveContent"
         >
           保存
         </Button>
@@ -56,38 +56,30 @@ export default {
     TextField,
   },
   props: {
+    getSearchData: {
+      type: Object,
+      default: () => {},
+    }
   },
-  created() {
+  mounted() {
     const getData = this.$store.getters['search/getSearchData']
     this.inputSearchData = getData.work
   },
   data() {
     return {
-      inputSearchData: '',
-      deleteData: [],
+      inputSearchData: [],
     }
-  },
-  computed: {
-    isDelete() {
-      return function(index){
-        if( this.deleteData.indexOf(index) >= 0 ) {
-          return false
-        } else {
-          return true
-        }
-      }
-    },
   },
   methods: {
     closeModal() {
       // this.$store.commit('search/setSearchWorkData',this.inputSearchData)
       this.$emit('closeModal', event)
     },
-    deleteContent(workItem, workIndex) {
-      this.deleteData.push(workIndex)
+    deleteContent(workIndex) {
+      this.inputSearchData.splice(workIndex, 1)
     },
     saveContent() {
-      // this.$store.commit('search/setSearchWorkData',this.inputSearchData)
+      this.$store.commit('search/setSearchWorkData',this.inputSearchData)
       this.$emit('closeModal', event)
     }
   },
