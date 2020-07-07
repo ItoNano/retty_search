@@ -48,13 +48,10 @@ export default {
         work: '',
         conditions: '',
       },
-      contentStyle: {
-        marginTop: '0px'
-      }
     }
   },
   mounted() {
-    this.contentStyle.marginTop = this.$refs.header.clientHeight + 'px'
+    
   },
   methods: {
     closeModal() {
