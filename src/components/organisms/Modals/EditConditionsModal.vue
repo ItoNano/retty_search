@@ -55,12 +55,6 @@ export default {
     Modal,
     TextField,
   },
-  props: {
-    getSearchData: {
-      type: Object,
-      default: () => {},
-    }
-  },
   mounted() {
     const getData = this.$store.getters['search/getSearchData']
     this.inputSearchData = getData.conditions
